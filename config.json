@@ -1,0 +1,19 @@
+{
+	"listen_address": "0.0.0.0",
+	"listen_port": 8080,
+	"webhook_signature_validation": {
+		"is_enabled": true,
+		"signing_secret": "secret-webhook-signing-secret"
+	},
+	"actions": {
+		"send_sms_when_no_answer": {
+			"url": "http://127.0.0.1:13013/cgi-bin/sendsms",
+			"params": {
+				"username": "kannel",
+				"password": "kannelpass",
+				"from": "MyService",
+				"text": "Hello {customer_name}, we tried calling you but got no answer."
+			}
+		}
+	}
+}
