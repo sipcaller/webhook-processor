@@ -100,7 +100,7 @@ class WebhookHandler(BaseHTTPRequestHandler):
         """Validate the webhook signature"""
         try:
             # Get signing secret from config
-            signing_secret = self.config.get('webhook_signature_validation', {}).get('signing_secret', '').encode('utf-8')
+            signing_secret = bytes.fromhex(self.config.get('webhook_signature_validation', {}).get('signing_secret', ''))
             
             # Parse the signature header
             parts = dict(part.split('=') for part in signature_header.split(','))
